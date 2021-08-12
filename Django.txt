@@ -1,0 +1,93 @@
+MVT - Model View Template
+M --> Database Operations
+T --> Presentation Logic
+V --> Business Logic
+
+
+Step-by-Step Flow :
+
+1. django-admin startproject
+2. python manage.py startapp testapp
+3. templates --> testapp --> HTML files
+4. statics --> css --> *.css
+5. statics --> images --> *.jpg
+6. settings.py
+		add application
+		add template folder path
+		add static folder path
+		add staticfiles_dirs path
+7. models.py 
+		class HydJob(modles.Model):
+			field declartion
+8. Check db connection -- python manage.py shell
+9. python manage.py makemigrations	
+10. python manage.py migrate
+11. register the model to the admin inside admin.py
+12. create super user	
+13. Check in the admin interface whether our tables are reflecting or not
+14. populate tables with required records
+15. views.py
+16. urls.py
+17. python manage.py runserver
+
+
+Working with Models and Databases
+
+Default Database : SQLite
+
+DataBase Configuration
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+MySQL:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'database name',
+		'USER' : 'root',
+		'PASSWORD' : 'root',
+		'HOST' : 'localhost' #127.0.0.1
+		'PORT' : 5432
+    }
+}
+
+
+python code ----makemigrations---> SQL Code ----migrate---> Database table creation
+
+
+# To check wheater db is available
+python manage.py shell
+from django.db import connection
+c = connection.cursor()
+
+
+python manage.py makemigrations           # 0001_initial.py will be created
+python mnage.py sqlmigrate testapp 00001  # convert into SQL Query, 0001 is the file
+python manage.py migrate
+
+
+127.0.0.1:8000/admin
+username and password
+create super user
+
+
+1. How to configure database inside settings.py ?
+2. How to check connections ?
+3. How to define Model class inside models.py ?
+4. How to perform makemigrations ?
+5. How can we perform migrate ?
+6. How to add our model to admin interface inside admin.py ?
+7. To display total data how to write ModelAdmin Class inside admin.py ?
+8. How to createsuperuser ?
+9. How to login to admin interface and add data to our tables ?
+10. How to see genertaed SQL code because of makemigrations ?
+
+
+
+
+
